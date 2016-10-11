@@ -25,7 +25,7 @@ function generateRainbow(baseColor = 0xFF0000 /* Red */) {
   let number = baseColor;
   baseDiffs.forEach((n, i) => {
     number += n;
-		const hexCode = leftPad(number.toString(16), 6, '0').slice(-6);
+    const hexCode = leftPad(number.toString(16), 6, '0').slice(-6);
     rainbow = [...rainbow, hexCode];
   });
 
