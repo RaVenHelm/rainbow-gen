@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 const leftPad = require('left-pad');
 
 const baseDiffs = (() => {
@@ -24,7 +25,8 @@ function generateRainbow(baseColor = 0xFF0000 /* Red */) {
   let number = baseColor;
   baseDiffs.forEach((n, i) => {
     number += n;
-    rainbow = [...rainbow, leftPad(number.toString(16), 6, '0').slice(-6)];
+		const hexCode = leftPad(number.toString(16), 6, '0').slice(-6);
+    rainbow = [...rainbow, hexCode];
   });
 
   return rainbow;
