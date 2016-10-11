@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-const leftPad = require('left-pad');
+import leftPad from 'left-pad';
 
 const baseDiffs = (() => {
   // Starting from #FF0000 red, end at #8B00FF violet
@@ -18,7 +18,7 @@ const baseDiffs = (() => {
     const next = a[i + 1];
     return next - n;
   }).slice(0, roygbiv.length - 1);
-})()
+})();
 
 function generateRainbow(baseColor = 0xFF0000 /* Red */) {
   let rainbow = [leftPad(baseColor.toString(16), 6, '0')];
@@ -32,4 +32,4 @@ function generateRainbow(baseColor = 0xFF0000 /* Red */) {
   return rainbow;
 }
 
-module.exports = generateRainbow;
+export default generateRainbow;
