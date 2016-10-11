@@ -1,0 +1,26 @@
+{
+  "name": "rainbow-gen",
+  "version": "1.0.0",
+  "description": "A function that create an array of hex colors based on the rainbow :D",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaVenHelm/rainbow-gen.git"
+  },
+  "keywords": [
+    "Rainbow",
+    "JavaScript"
+  ],
+  "author": "T.C. Enders <tyberius.enders@unco.edu>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/RaVenHelm/rainbow-gen/issues"
+  },
+  "homepage": "https://github.com/RaVenHelm/rainbow-gen#readme",
+  "dependencies": {
+    "left-pad": "^1.1.3"
+  }
+}
