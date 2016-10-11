@@ -8,4 +8,6 @@ const rainbowGen = require('rainbow-gen');
 
 // Using ES6 modules (use [Babel](http://babeljs.io) with your favorite module loader, if you're in the browser)
 import rainbowGen from 'rainbow-gen';
+
+const rainbow = rainbowGen(); // defaults to typical ROYGBIV style rainbow
 ```
