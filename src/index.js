@@ -20,18 +20,24 @@ const baseDiffs = (() => {
   }).slice(0, roygbiv.length - 1);
 })();
 
-function* generateRainbow(baseColor = 0xFF0000 /* Red */) {
+export function* generateRainbow(baseColor = 0xFF0000) {
   let number = baseColor;
   yield _toHexString(number);
   for(let i = 0; i < baseDiffs.length; i++) {
     number += baseDiffs[i];
-    const hexCode = leftPad(_toHexString(number), 6, '0').slice(-6);
-    yield hexCode;
+    yield _toHexString(number);
   }
 }
 
+export function rainbowArray(baseColor = 0xFF0000) {
+  let number = baseColor;
+  let result = [_toHexString(number)];
+  baseDiffs.forEach(diff => result.push(_toHexString(number += diff)));
+  return result;
+}
+
 function _toHexString(number) {
-  return number.toString(16);
+  return leftPad(number.toString(16), 6, '0').slice(-6);
 }
 
 export default generateRainbow;
