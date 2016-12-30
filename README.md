@@ -4,7 +4,7 @@ JavaScript library for creating :rainbow: s! Uses node/commonjs modules. Works o
 ## Usage
 ```javascript
 // Using ES5
-const rainbowGen = require('rainbow-gen');
+var rainbowGen = require('rainbow-gen').generateRainbow;
 
 // Using ES6 modules (using Babel)
 import rainbowGen from 'rainbow-gen';
