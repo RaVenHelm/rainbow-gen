@@ -1,49 +1,42 @@
 /* global describe, it, beforeEach */
 import { expect } from 'chai';
-import rainbow, { rainbowArray } from '../';
+import rainbowGen from '../';
 
 describe('1: rainbow generator function', () => {
-  let r = null;
+  let rainbow = null;
   beforeEach(() => {
-    r = rainbow();
+    rainbow = rainbowGen();
+  });
+
+  it('will be an array', () => {
+    expect(rainbow).to.be.a('array');
   });
 
   it('will return the first number in the sequence', () => {
-    const { value } = r.next();
+    const [value] = rainbow;
     const expected = 0xFF0000;
     expect(value).to.equal(expected.toString(16));
   });
 
-  it('will return the next number in the sequence', () => {
-    r.next(); // skip the first
-    const { value } = r.next();
-    const expected = 0xFF7F00;
-    expect(value).to.equal(expected.toString(16));
-  });
-
   it('will generate 7 colors', () => {
-    const colors = Array.from(r);
-    expect(colors.length).to.equal(7);
-    colors.forEach((c) => {
+    expect(rainbow.length).to.equal(7);
+    rainbow.forEach((c) => {
       expect(c).to.be.a('string');
     });
   });
 });
 
-describe('2: rainbowArray', () => {
+describe('2: rainbow with starting value', () => {
   let r = null;
+  let baseColor = null;
   beforeEach(() => {
-    r = rainbowArray((2 ** 24) - 1);
+    const max = 2 ** 24;
+    const min = 0;
+    baseColor = Math.floor(Math.random() * (max - min)) + 1;
+    r = rainbowGen({ baseColor });
   });
 
-  it('will return an array of length 7', () => {
-    expect(r).to.be.a('array');
-    expect(r.length).to.equal(7);
-  });
-
-  it('will be an arry of strings only', () => {
-    r.forEach((c) => {
-      expect(c).to.be.a('string');
-    });
+  it('will have the generated number as its first value', () => {
+    expect(r[0]).to.equal(baseColor.toString(16));
   });
 });
