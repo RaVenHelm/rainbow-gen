@@ -1,6 +1,6 @@
-import 'babel-polyfill';
+/* global describe, it, beforeEach */
 import { expect } from 'chai';
-import rainbow, {rainbowArray} from '../';
+import rainbow, { rainbowArray } from '../';
 
 describe('1: rainbow generator function', () => {
   let r = null;
@@ -9,14 +9,14 @@ describe('1: rainbow generator function', () => {
   });
 
   it('will return the first number in the sequence', () => {
-    const {value} = r.next();
+    const { value } = r.next();
     const expected = 0xFF0000;
     expect(value).to.equal(expected.toString(16));
   });
 
   it('will return the next number in the sequence', () => {
     r.next(); // skip the first
-    const {value} = r.next();
+    const { value } = r.next();
     const expected = 0xFF7F00;
     expect(value).to.equal(expected.toString(16));
   });
@@ -24,7 +24,7 @@ describe('1: rainbow generator function', () => {
   it('will generate 7 colors', () => {
     const colors = Array.from(r);
     expect(colors.length).to.equal(7);
-    colors.forEach(c => {
+    colors.forEach((c) => {
       expect(c).to.be.a('string');
     });
   });
@@ -33,7 +33,7 @@ describe('1: rainbow generator function', () => {
 describe('2: rainbowArray', () => {
   let r = null;
   beforeEach(() => {
-    r = rainbowArray(Math.pow(2, 24) - 1);
+    r = rainbowArray((2 ** 24) - 1);
   });
 
   it('will return an array of length 7', () => {
@@ -42,7 +42,7 @@ describe('2: rainbowArray', () => {
   });
 
   it('will be an arry of strings only', () => {
-    r.forEach(c => {
+    r.forEach((c) => {
       expect(c).to.be.a('string');
     });
   });
